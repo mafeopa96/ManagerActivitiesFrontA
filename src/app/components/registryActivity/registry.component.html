@@ -1,0 +1,40 @@
+<form [formGroup]="form" (ngSubmit)="form.valid?action():''">
+  <div fxLayout="column" fxLayoutAlign="space-around center">
+      <mat-form-field appearance="outline">
+          <mat-label>Name Activity :</mat-label>
+          <input matInput formControlName="name">
+          <mat-error>required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+          <mat-label>State :</mat-label>
+          <mat-select formControlName="state">
+              <mat-option [value]="state.id" *ngFor="let state of states">
+                  {{state.nombre}}</mat-option>
+          </mat-select>
+          <mat-error>required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="outline">
+          <mat-label>Employee :</mat-label>
+          <mat-select formControlName="employee">
+              <mat-option [value]="employee.id" *ngFor="let employee of Employees">
+                  {{employee.name}}</mat-option>
+          </mat-select>
+          <mat-error>required</mat-error>
+      </mat-form-field>
+
+      <mat-form-field appearance="fill">
+          <mat-label>Estimated Date :</mat-label>
+          <input matInput [matDatepicker]="picker1" formControlName="date">
+          <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+          <mat-datepicker #picker1></mat-datepicker>
+          <mat-error>required</mat-error>
+      </mat-form-field>
+
+  </div>
+  <div style="display: flex;justify-content: center;align-items: center;">
+      <button style="height: 5vh;" type="submit">{{data['update']?'update activity':'add activity'}}</button>
+  </div>
+
+</form>
