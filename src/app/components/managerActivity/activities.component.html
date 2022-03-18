@@ -1,0 +1,68 @@
+<div style="padding: 5%;">
+  <mat-toolbar>
+      <div style="width: 100%;" fxLayout="row" fxLayoutAlign="space-around center">
+          <div fxFlex>
+              <span>Activities</span>
+          </div>
+          <div fxFlex="5">
+              <button matTooltip="New Activity" (click)="newActivity()">
+                  <mat-icon>add</mat-icon>
+              </button>
+          </div>
+      </div>
+  </mat-toolbar>
+  <table style="width: 100%" mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+        <ng-container matColumnDef="state">
+            <th mat-header-cell *matHeaderCellDef> State </th>
+            <td mat-cell *matCellDef="let element"> {{element.state}} </td>
+        </ng-container>
+      <ng-container matColumnDef="nameActivity">
+          <th mat-header-cell *matHeaderCellDef> Activity </th>
+          <td mat-cell *matCellDef="let element"> {{element.nameActivity}} </td>
+      </ng-container>
+      <ng-container matColumnDef="employee">
+        <th mat-header-cell *matHeaderCellDef> Employee </th>
+        <td mat-cell *matCellDef="let element"> {{element.employee}} </td>
+      </ng-container>    
+
+      <ng-container matColumnDef="EstimatedDate">
+          <th mat-header-cell *matHeaderCellDef> Estimated Date </th>
+          <td mat-cell *matCellDef="let element"> {{element.date}} </td>
+      </ng-container>
+
+      <!-- Weight Column -->
+      <ng-container matColumnDef="daysLatest">
+          <th mat-header-cell *matHeaderCellDef> Days Latest </th>
+          <td mat-cell *matCellDef="let element"> {{element.daysLatest}} </td>
+      </ng-container>
+
+      
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="editar">
+          <th mat-header-cell *matHeaderCellDef> Update </th>
+          <td mat-cell *matCellDef="let element">
+              <button matTooltip="update Activity" (click)="updateActivity(element)">
+                  <mat-icon>edit</mat-icon>
+              </button>
+          </td>
+      </ng-container>
+
+
+      <!-- Symbol Column -->
+      <ng-container matColumnDef="eliminar">
+          <th mat-header-cell *matHeaderCellDef> Delete </th>
+          <td mat-cell *matCellDef="let element">
+              <button matTooltip="Delete activity" (click)="delete(element.id)">
+                  <mat-icon>delete</mat-icon>
+              </button>
+          </td>
+      </ng-container>
+
+
+      <tr mat-header-row *matHeaderRowDef="displayedColumns"></tr>
+      <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>
